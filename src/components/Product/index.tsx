@@ -22,16 +22,14 @@ export const Product: React.FC<ProductProps> = ({
   color,
 }) => {
   return (
-    <div
-      className={`w-full max-w-[472.7px] h-[500px] bg-[#f2f3f3] flex flex-col justify-between`}
-    >
-      <div className="self-end pt-4 pr-4 pl-4 z-10 cursor-pointer">
+    <div className="w-full bg-[#f2f3f3] flex flex-col max-w-[472.7px]">
+      <button className="self-end mt-8 mr-8">
         <svg
           viewBox="0 0 24.00 24.00"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          height="36px"
-          width="36px"
+          height="40px"
+          width="40px"
         >
           <g id="SVGRepo_iconCarrier">
             <g id="Interface / Heart_01">
@@ -46,16 +44,14 @@ export const Product: React.FC<ProductProps> = ({
             </g>
           </g>
         </svg>
-      </div>
-      <div className="w-[400px] h-[300px] self-center">
-        <img src={imageUrl} className="object-cover -translate-y-12" alt="" />
-      </div>
-      <div className="flex justify-between items-center p-8 text-xl">
+      </button>
+      <img src={imageUrl} alt="" className="" />
+      <div className="flex items-center justify-between mr-8 ml-8 mb-8">
         <div>
-          <p className="font-bold">{brand}</p>
-          <p>{title}</p>
+          <p className="text-xl font-bold">{brand}</p>
+          <p className="text-xl">{title}</p>
         </div>
-        <p className="font-bold">{price.toString()} ₽</p>
+        <p className="font-bold text-xl">{price} $</p>
       </div>
     </div>
   );
