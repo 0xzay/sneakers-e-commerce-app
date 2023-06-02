@@ -5,6 +5,7 @@ export const Header: React.FC = () => {
   const [openLang, setOpenLang] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openWish, setOpenWish] = useState(false);
+
   return (
     <header className="flex sticky w-full items-center pt-1 pb-1 bg-[#1F1F1F] h-24">
       <div className="flex-1 flex justify-between items-center flex-col gap-4 xl:ml-10 xl:mr-10 xl:flex-row">
@@ -26,7 +27,7 @@ export const Header: React.FC = () => {
         </div>
         <div className="flex items-center gap-8">
           <button
-            className="flex items-center"
+            className="flex items-center p-1.5 rounded-full hover:bg-[#333333] active:bg-[#2d2d2d]"
             onClick={() => (openLang ? setOpenLang(false) : setOpenLang(true))}
           >
             <div className="w-3 h-3 mr-2 bg-[url('././assets/RU.svg')]" />
@@ -42,10 +43,10 @@ export const Header: React.FC = () => {
             >
               <g
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 stroke="none"
-                stroke-linecap="round"
-                stroke-width="1"
+                strokeLinecap="round"
+                strokeWidth="1"
               >
                 <path
                   stroke="#FFFFFF"
@@ -58,7 +59,7 @@ export const Header: React.FC = () => {
           <ul
             className={`absolute ${
               openLang ? '' : 'opacity-0 invisible'
-            } z-10 w-56 bg-white mt-32 border duration-150 transition-all ease-in-out rounded-md`}
+            } z-10 w-56 bg-white mt-36 border duration-150 transition-all ease-in-out rounded-md`}
           >
             <li className="border-b flex items-center p-3 hover:bg-gray-100 cursor-pointer">
               <div className="w-4 h-4 mr-2 bg-[url('././assets/RU.svg')]" />
@@ -75,40 +76,12 @@ export const Header: React.FC = () => {
               </span>
             </li>
           </ul>
-          <div className="flex items-center pl-4 pr-4 w-96 pt-2 pb-2 gap-4 bg-transparent">
-            <input
-              type="text"
-              className="outline-none bg-transparent text-white border-solid border-b opacity-50 p-2 focus:opacity-100 placeholder:text-white w-full"
-              placeholder="Search"
-            />
-            <svg
-              width="30px"
-              height="30px"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <g id="Interface / Search_Magnifying_Glass">
-                  <path
-                    id="Vector"
-                    d="M15 15L21 21M10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10C17 13.866 13.866 17 10 17Z"
-                    stroke="#ffffff"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                </g>
-              </g>
-            </svg>
-          </div>
-          <div
+          <input
+            type="text"
+            className="outline-none w-96 pt-2 pb-2 bg-transparent text-white border-solid border-b opacity-50 p-2 focus:opacity-100 placeholder:text-white bg-[url('././assets/search.svg')] bg-right bg-no-repeat bg-[length:24px_24px]"
+            placeholder="Search"
+          />
+          <button
             className="rounded-full w-[50px] h-[50px] cursor-pointer hover:bg-[#333333] hover:scale-110 active:bg-[#2d2d2d]"
             onClick={() => (openWish ? setOpenWish(false) : setOpenWish(true))}
           >
@@ -118,7 +91,7 @@ export const Header: React.FC = () => {
               xmlns="http://www.w3.org/2000/svg"
               height="30px"
               width="30px"
-              className="m-auto mt-2.5 "
+              className="m-auto"
             >
               <g id="SVGRepo_iconCarrier">
                 <g id="Interface / Heart_01">
@@ -126,15 +99,15 @@ export const Header: React.FC = () => {
                     id="Vector"
                     d="M12 7.69431C10 2.99988 3 3.49988 3 9.49991C3 15.4999 12 20.5001 12 20.5001C12 20.5001 21 15.4999 21 9.49991C21 3.49988 14 2.99988 12 7.69431Z"
                     stroke="#ffffff"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   ></path>
                 </g>
               </g>
             </svg>
-          </div>
-          <div
+          </button>
+          <button
             className="rounded-full w-[50px] h-[50px] cursor-pointer hover:bg-[#333333] hover:scale-110 active:bg-[#2d2d2d]"
             onClick={() => (openCart ? setOpenCart(false) : setOpenCart(true))}
           >
@@ -144,25 +117,25 @@ export const Header: React.FC = () => {
               xmlns="http://www.w3.org/2000/svg"
               width="30px"
               height="30px"
-              className="m-auto mt-2.5 "
+              className="m-auto"
             >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
               <g
                 id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               ></g>
               <g id="SVGRepo_iconCarrier">
                 <path
                   d="M15 11C15 12.6569 13.6569 14 12 14C10.3431 14 9 12.6569 9 11M20 7L18 3H6L4 7M20 7H4M20 7V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V7"
                   stroke="#ffffff"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 ></path>
               </g>
             </svg>
-          </div>
+          </button>
         </div>
       </div>
       <div
@@ -170,7 +143,7 @@ export const Header: React.FC = () => {
           openCart ? 'right-0' : 'right-[-860px]'
         } transition-all duration-150`}
       >
-        <div
+        <button
           className="bg-white w-[50px] h-[50px] mt-3 mr-2 rounded-full border cursor-pointer"
           onClick={() => (openCart ? setOpenCart(false) : setOpenCart(true))}
         >
@@ -180,25 +153,25 @@ export const Header: React.FC = () => {
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="m-auto mt-[6px] hover:scale-110"
+            className="m-auto hover:scale-110"
           >
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g
               id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             ></g>
             <g id="SVGRepo_iconCarrier">
               <path
                 d="M16 8L8 16M8.00001 8L16 16"
                 stroke="#b5b9bf"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               ></path>
             </g>
           </svg>
-        </div>
+        </button>
         <div className="bg-white text-center border-l w-[800px]">
           <h1 className="text-6xl font-bold p-16">IN CART (0)</h1>
           <ProductMini />
@@ -210,7 +183,7 @@ export const Header: React.FC = () => {
           openWish ? 'right-0' : 'right-[-860px]'
         } z-50 transition-all duration-150`}
       >
-        <div
+        <button
           className="bg-white w-[50px] h-[50px] mt-3 mr-2 rounded-full border cursor-pointer "
           onClick={() => (openWish ? setOpenWish(false) : setOpenWish(true))}
         >
@@ -220,25 +193,25 @@ export const Header: React.FC = () => {
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="m-auto mt-[6px] hover:scale-110"
+            className="m-auto hover:scale-110"
           >
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g
               id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             ></g>
             <g id="SVGRepo_iconCarrier">
               <path
                 d="M16 8L8 16M8.00001 8L16 16"
                 stroke="#b5b9bf"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               ></path>
             </g>
           </svg>
-        </div>
+        </button>
         <div className="bg-white text-center border-l w-[800px]">
           <h1 className="text-6xl font-bold p-16">IN WISHLIST (0)</h1>
           <ProductMini />

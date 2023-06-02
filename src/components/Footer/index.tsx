@@ -18,7 +18,7 @@ export const Footer = () => {
             />
           </svg>
         </a>
-        <div className="text-[#333333] opacity-70 flex gap-4">
+        <div className="text-[#999999] flex gap-4">
           <a
             href="https://github.com/0xzay/sneakers-e-commerce-app"
             target="_blank"
@@ -33,7 +33,7 @@ export const Footer = () => {
           </a>
         </div>
       </div>
-      <span className="text-sm text-[#333333] opacity-50 max-w-md">
+      <p className="text-sm text-[#999999] max-w-md">
         Copyright © SNEAKERS® E-Commerce 2023 All Rights Reserved Developed with
         ❤ by{' '}
         <a
@@ -43,7 +43,7 @@ export const Footer = () => {
         >
           0xzay
         </a>
-      </span>
+      </p>
     </div>
   );
 };
