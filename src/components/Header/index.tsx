@@ -1,7 +1,30 @@
 import React, { useState } from 'react';
 import { ProductMini } from '../ProductMini';
+import { useSelector } from 'react-redux';
+import { selectCurrency } from '../../redux/currency/selectors';
+import { useAppDispatch } from '../../redux/store';
+import { setItems } from '../../redux/currency/slice';
+
+const currencyList = [
+  {
+    id: 1,
+    country: 'Russia',
+    title: 'RUB ₽',
+    imageUrl: '././assets/RU.svg',
+    value: 'RUB',
+  },
+  {
+    id: 2,
+    country: 'United States',
+    title: 'USD $',
+    imageUrl: '././assets/US.svg',
+    value: 'USD',
+  },
+];
 
 export const Header: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { currency } = useSelector(selectCurrency);
   const [openLang, setOpenLang] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openWish, setOpenWish] = useState(false);
@@ -30,8 +53,12 @@ export const Header: React.FC = () => {
             className="flex items-center p-1.5 rounded-full hover:bg-[#333333] active:bg-[#2d2d2d]"
             onClick={() => (openLang ? setOpenLang(false) : setOpenLang(true))}
           >
-            <div className="w-3 h-3 mr-2 bg-[url('././assets/RU.svg')]" />
-            <span className="text-white mr-2">RUB</span>
+            <div
+              className={`w-3 h-3 mr-2 bg-[url('././assets/${
+                currency == 'USD' ? 'US' : 'RU'
+              }.svg')]`}
+            />
+            <span className="text-white mr-2">{currency}</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="10"
@@ -61,20 +88,22 @@ export const Header: React.FC = () => {
               openLang ? '' : 'opacity-0 invisible'
             } z-10 w-56 bg-white mt-36 border duration-150 transition-all ease-in-out rounded-md`}
           >
-            <li className="border-b flex items-center p-3 hover:bg-gray-100 cursor-pointer">
-              <div className="w-4 h-4 mr-2 bg-[url('././assets/RU.svg')]" />
-              <p>Russia</p>
-              <span className="font-bold text-gray-300 absolute right-0 mr-2">
-                RUB ₽
-              </span>
-            </li>
-            <li className="flex items-center p-3 hover:bg-gray-100 cursor-pointer">
-              <div className="w-4 h-4 mr-2 bg-[url('././assets/US.svg')]" />
-              <p>United States</p>
-              <span className="font-bold text-gray-300 absolute right-0 mr-2">
-                USD $
-              </span>
-            </li>
+            {currencyList.map((obj: any) => (
+              <li
+                key={obj.id}
+                className="border-b flex items-center p-3 hover:bg-gray-100 cursor-pointer"
+                onClick={() => {
+                  dispatch(setItems(obj.value));
+                  setOpenLang(false);
+                }}
+              >
+                <div className={`w-4 h-4 mr-2 bg-[url('${obj.imageUrl}')]`} />
+                <p>{obj.country}</p>
+                <span className="font-bold text-gray-300 absolute right-0 mr-2">
+                  {obj.title}
+                </span>
+              </li>
+            ))}
           </ul>
           <input
             type="text"
@@ -139,7 +168,7 @@ export const Header: React.FC = () => {
         </div>
       </div>
       <div
-        className={`fixed flex min-h-full top-0 z-50 ${
+        className={`fixed flex min-h-full top-0 z-[289] ${
           openCart ? 'right-0' : 'right-[-860px]'
         } transition-all duration-150`}
       >
@@ -181,7 +210,7 @@ export const Header: React.FC = () => {
       <div
         className={`fixed flex min-h-full top-0 ${
           openWish ? 'right-0' : 'right-[-860px]'
-        } z-50 transition-all duration-150`}
+        } z-[289] transition-all duration-150`}
       >
         <button
           className="bg-white w-[50px] h-[50px] mt-3 mr-2 rounded-full border cursor-pointer "
