@@ -1,11 +1,10 @@
-import React from 'react';
 import ContentLoader from 'react-content-loader';
 
 const ProductSkeleton = () => (
   <ContentLoader
-    speed={2}
-    width={473}
-    height={633}
+    speed={3}
+    width={472}
+    height={632}
     viewBox="0 0 473 633"
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
