@@ -1,17 +1,24 @@
-import { Footer } from './components/Footer';
-import { Header } from './components/Header';
-import { Products } from './components/Products';
-import { ProductsHeader } from './components/ProductsHeader';
 import { Provider } from 'react-redux';
-import { store, useAppDispatch } from './redux/store';
+import { store } from './redux/store';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { About } from './pages/About';
+import { Main } from './pages/Main';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Main />,
+  },
+  {
+    path: '/about',
+    element: <About />,
+  },
+]);
 
 const App = () => {
   return (
     <Provider store={store}>
-      <Header />
-      <ProductsHeader />
-      <Products />
-      <Footer />
+      <RouterProvider router={router} />
     </Provider>
   );
 };
