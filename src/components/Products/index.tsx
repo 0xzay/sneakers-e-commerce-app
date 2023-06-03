@@ -5,20 +5,43 @@ import { fetchSneakers } from '../../redux/sneakers/asyncActions';
 import { useSelector } from 'react-redux';
 import { selectSneakersData } from '../../redux/sneakers/selectors';
 import ProductSkeleton from '../Product/skeleton';
+import { selectFilters } from '../../redux/filters/selectors';
+import { getUsdPrice } from '../../utils/getUsdPrice';
+import { NotProducts } from '../NotProducts';
 
 export const Products: React.FC = () => {
   const dispatch = useAppDispatch();
   const { items, status } = useSelector(selectSneakersData);
+  const [usdPrice, setUsdPrice] = React.useState(0);
+  const { brandFilter, colorFilter, currentPage, sort, searchValue } =
+    useSelector(selectFilters);
+  const brand = brandFilter;
+  const color = colorFilter;
+  const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
+  const sortBy = sort.sortProperty.replace('-', '');
+  const search = searchValue;
 
   const getSneakers = async () => {
-    dispatch(fetchSneakers());
+    dispatch(
+      fetchSneakers({
+        sortBy,
+        order,
+        brand,
+        search,
+        color,
+        currentPage: String(currentPage),
+      })
+    );
   };
 
   React.useEffect(() => {
+    getUsdPrice().then(res => setUsdPrice(res));
     getSneakers();
-  }, []);
+  }, [sortBy, order, brand, color]);
 
-  const products = items.map((obj: any) => <Product key={obj.id} {...obj} />);
+  const products = items.map((obj: any) => (
+    <Product key={obj.id} usdPrice={usdPrice} {...obj} />
+  ));
   const skeletons = [...new Array(8)].map((_, index) => (
     <ProductSkeleton key={index} />
   ));

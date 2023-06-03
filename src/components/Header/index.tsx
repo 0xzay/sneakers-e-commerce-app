@@ -4,20 +4,22 @@ import { useSelector } from 'react-redux';
 import { selectCurrency } from '../../redux/currency/selectors';
 import { useAppDispatch } from '../../redux/store';
 import { setItems } from '../../redux/currency/slice';
+import iconRU from '../../assets/icons/RU.svg';
+import iconUS from '../../assets/icons/US.svg';
 
 const currencyList = [
   {
     id: 1,
     country: 'Russia',
     title: 'RUB ₽',
-    imageUrl: '././assets/RU.svg',
+    image: iconRU,
     value: 'RUB',
   },
   {
     id: 2,
     country: 'United States',
     title: 'USD $',
-    imageUrl: '././assets/US.svg',
+    image: iconUS,
     value: 'USD',
   },
 ];
@@ -53,10 +55,10 @@ export const Header: React.FC = () => {
             className="flex items-center p-1.5 rounded-full hover:bg-[#333333] active:bg-[#2d2d2d]"
             onClick={() => (openLang ? setOpenLang(false) : setOpenLang(true))}
           >
-            <div
-              className={`w-3 h-3 mr-2 bg-[url('././assets/${
-                currency == 'USD' ? 'US' : 'RU'
-              }.svg')]`}
+            <img
+              src={currency === 'RUB' ? iconRU : iconUS}
+              alt=""
+              className="w-3 h-3 mr-2"
             />
             <span className="text-white mr-2">{currency}</span>
             <svg
@@ -97,7 +99,7 @@ export const Header: React.FC = () => {
                   setOpenLang(false);
                 }}
               >
-                <div className={`w-4 h-4 mr-2 bg-[url('${obj.imageUrl}')]`} />
+                <img src={obj.image} alt="" className="w-4 h-4 mr-2" />
                 <p>{obj.country}</p>
                 <span className="font-bold text-gray-300 absolute right-0 mr-2">
                   {obj.title}
@@ -107,7 +109,7 @@ export const Header: React.FC = () => {
           </ul>
           <input
             type="text"
-            className="outline-none w-96 pt-2 pb-2 bg-transparent text-white border-solid border-b opacity-50 p-2 focus:opacity-100 placeholder:text-white bg-[url('././assets/search.svg')] bg-right bg-no-repeat bg-[length:24px_24px]"
+            className="outline-none w-96 pt-2 pb-2 bg-transparent text-white border-solid border-b opacity-50 p-2 focus:opacity-100 placeholder:text-white bg-[url('././assets/icons/search.svg')] bg-right bg-no-repeat bg-[length:24px_24px]"
             placeholder="Search"
           />
           <button

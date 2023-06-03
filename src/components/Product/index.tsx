@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectCurrency } from '../../redux/currency/selectors';
+import { getUsdPrice } from '../../utils/getUsdPrice';
 
 type ProductProps = {
   id: string;
@@ -11,6 +12,7 @@ type ProductProps = {
   sizes: number[];
   rating: number;
   color: string;
+  usdPrice: number;
 };
 
 export const Product: React.FC<ProductProps> = ({
@@ -22,9 +24,11 @@ export const Product: React.FC<ProductProps> = ({
   sizes,
   rating,
   color,
+  usdPrice,
 }) => {
   const { currency } = useSelector(selectCurrency);
   const [addWish, setAddWish] = React.useState(false);
+
   return (
     <div className="w-full bg-[#f2f3f3] flex flex-col max-w-[472.7px] min-h-[632.6px]">
       <button
@@ -59,7 +63,10 @@ export const Product: React.FC<ProductProps> = ({
           <p className="text-xl">{title}</p>
         </div>
         <p className="font-bold text-xl">
-          {price.toLocaleString()} {currency == 'USD' ? '$' : '₽'}
+          {currency == 'USD'
+            ? Math.trunc(price / usdPrice).toLocaleString()
+            : price.toLocaleString()}{' '}
+          {currency == 'USD' ? '$' : '₽'}
         </p>
       </div>
     </div>

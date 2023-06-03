@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
@@ -25,12 +26,7 @@ export const Footer = () => {
           >
             Github
           </a>
-          <a
-            href="https://github.com/0xzay/sneakers-e-commerce-app"
-            target="_blank"
-          >
-            About
-          </a>
+          <Link to="/about">About</Link>
         </div>
       </div>
       <p className="text-sm text-[#999999] max-w-md">
