@@ -19,3 +19,12 @@ export interface SneakersSliceState {
   items: Sneaker[];
   status: Status;
 }
+
+export type SearchSneakersParams = {
+  sortBy: string;
+  order: string;
+  brand: string;
+  color: string;
+  search: string;
+  currentPage: string;
+};
