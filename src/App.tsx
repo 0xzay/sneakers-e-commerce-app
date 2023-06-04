@@ -3,11 +3,13 @@ import { store } from './redux/store';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { About } from './pages/About';
 import { Main } from './pages/Main';
+import { ErrorPage } from './components/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Main />,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/about',
