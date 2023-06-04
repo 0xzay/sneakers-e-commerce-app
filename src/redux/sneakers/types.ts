@@ -26,5 +26,5 @@ export type SearchSneakersParams = {
   brand: string;
   color: string;
   search: string;
-  currentPage: string;
+  currentPage: number;
 };

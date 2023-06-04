@@ -1,4 +1,5 @@
 export enum SortPropertyEnum {
+  NOTHING = '',
   RATING = 'rating',
   PRICE_DESC = 'price',
   PRICE_ASC = '-price',

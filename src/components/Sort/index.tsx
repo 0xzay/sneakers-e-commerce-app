@@ -10,7 +10,8 @@ type SortItem = {
   sortProperty: SortPropertyEnum;
 };
 
-export const SortList: SortItem[] = [
+export const sortList: SortItem[] = [
+  { title: 'Not selected', sortProperty: SortPropertyEnum.NOTHING },
   { title: 'Rating', sortProperty: SortPropertyEnum.RATING },
   { title: 'Price (Low)', sortProperty: SortPropertyEnum.PRICE_ASC },
   { title: 'Price (Hight)', sortProperty: SortPropertyEnum.PRICE_DESC },
@@ -31,7 +32,7 @@ export const Sort = () => {
         className="font-bold outline-none text-xl"
         onChange={e => onClickListItem(JSON.parse(e.target.value))}
       >
-        {SortList.map((obj: any) => (
+        {sortList.map((obj: any) => (
           <option
             key={obj.title}
             value={JSON.stringify(obj)}

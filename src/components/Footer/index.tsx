@@ -27,6 +27,7 @@ export const Footer = () => {
             Github
           </a>
           <Link to="/about">About</Link>
+          <Link to="/not-found">Not found</Link>
         </div>
       </div>
       <p className="text-sm text-[#999999] max-w-md">

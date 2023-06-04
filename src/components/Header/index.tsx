@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ProductMini } from '../ProductMini';
 import { useSelector } from 'react-redux';
 import { selectCurrency } from '../../redux/currency/selectors';
@@ -6,6 +6,8 @@ import { useAppDispatch } from '../../redux/store';
 import { setItems } from '../../redux/currency/slice';
 import iconRU from '../../assets/icons/RU.svg';
 import iconUS from '../../assets/icons/US.svg';
+import { debounce } from 'lodash';
+import { setSearchValue } from '../../redux/filters/slice';
 
 const currencyList = [
   {
@@ -27,14 +29,28 @@ const currencyList = [
 export const Header: React.FC = () => {
   const dispatch = useAppDispatch();
   const { currency } = useSelector(selectCurrency);
-  const [openLang, setOpenLang] = useState(false);
-  const [openCart, setOpenCart] = useState(false);
-  const [openWish, setOpenWish] = useState(false);
+  const [openCurr, setOpenCurr] = React.useState(false);
+  const [openCart, setOpenCart] = React.useState(false);
+  const [openWish, setOpenWish] = React.useState(false);
+  const [value, setValue] = React.useState<string>('');
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  const updateSearchValue = React.useCallback(
+    debounce((str: string) => {
+      dispatch(setSearchValue(str));
+    }, 150),
+    []
+  );
+
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
+    updateSearchValue(event.target.value);
+  };
 
   return (
-    <header className="flex sticky w-full items-center pt-1 pb-1 bg-[#1F1F1F] h-24">
+    <header className="flex sticky top-0 w-full items-center pt-1 pb-1 bg-[#1F1F1F] h-24">
       <div className="flex-1 flex justify-between items-center flex-col gap-4 xl:ml-10 xl:mr-10 xl:flex-row">
-        <div>
+        <div className="p-3 hover:bg-[#333333] active:bg-[#2d2d2d] rounded-full">
           <a href="/">
             <svg
               width="195"
@@ -52,8 +68,8 @@ export const Header: React.FC = () => {
         </div>
         <div className="flex items-center gap-8">
           <button
-            className="flex items-center p-1.5 rounded-full hover:bg-[#333333] active:bg-[#2d2d2d]"
-            onClick={() => (openLang ? setOpenLang(false) : setOpenLang(true))}
+            className="flex items-center p-2 rounded-full hover:bg-[#333333] active:bg-[#2d2d2d]"
+            onClick={() => (openCurr ? setOpenCurr(false) : setOpenCurr(true))}
           >
             <img
               src={currency === 'RUB' ? iconRU : iconUS}
@@ -67,7 +83,7 @@ export const Header: React.FC = () => {
               height="10"
               viewBox="0 0 12 12"
               className={`opacity-40 ${
-                openLang ? 'rotate-180' : ''
+                openCurr ? 'rotate-180' : ''
               } transition-all duration-150`}
             >
               <g
@@ -87,7 +103,7 @@ export const Header: React.FC = () => {
           </button>
           <ul
             className={`absolute ${
-              openLang ? '' : 'opacity-0 invisible'
+              openCurr ? '' : 'opacity-0 invisible'
             } z-10 w-56 bg-white mt-36 border duration-150 transition-all ease-in-out rounded-md`}
           >
             {currencyList.map((obj: any) => (
@@ -96,7 +112,7 @@ export const Header: React.FC = () => {
                 className="border-b flex items-center p-3 hover:bg-gray-100 cursor-pointer"
                 onClick={() => {
                   dispatch(setItems(obj.value));
-                  setOpenLang(false);
+                  setOpenCurr(false);
                 }}
               >
                 <img src={obj.image} alt="" className="w-4 h-4 mr-2" />
@@ -110,7 +126,10 @@ export const Header: React.FC = () => {
           <input
             type="text"
             className="outline-none w-96 pt-2 pb-2 bg-transparent text-white border-solid border-b opacity-50 p-2 focus:opacity-100 placeholder:text-white bg-[url('././assets/icons/search.svg')] bg-right bg-no-repeat bg-[length:24px_24px]"
-            placeholder="Search"
+            placeholder="Search..."
+            ref={inputRef}
+            onChange={onChangeInput}
+            value={value}
           />
           <button
             className="rounded-full w-[50px] h-[50px] cursor-pointer hover:bg-[#333333] hover:scale-110 active:bg-[#2d2d2d]"

@@ -1,6 +1,6 @@
 import { setColorFilter } from '../../redux/filters/slice';
 
-const ColorFilter = ['White', 'Black', 'Gray', 'Blue', 'Cyan'];
+const ColorFilter = ['White', 'Black', 'Gray', 'Blue', 'Green'];
 
 type FiltersProps = {
   brandFilterList: string[];
