@@ -18,13 +18,13 @@ export const Filters: React.FC<FiltersProps> = ({
   onChangeColor,
 }) => {
   return (
-    <div className="flex gap-4">
-      <div className="flex items-center gap-1">
-        <p className="text-gray-400 text-xl">Brand: </p>
+    <div className="flex mt-4 md:mt-0 gap-1 md:gap-4">
+      <div className="flex items-center gap-1 text-xl">
+        <p className="text-gray-400 ">Brand: </p>
         <select
           name=""
           id=""
-          className="font-bold outline-none text-xl"
+          className="font-bold outline-none"
           onChange={e => onChangeBrand(e.target.value)}
         >
           <option value="">Not Selected</option>
@@ -39,12 +39,12 @@ export const Filters: React.FC<FiltersProps> = ({
           ))}
         </select>
       </div>
-      <div className="flex items-center gap-1">
-        <p className="text-gray-400 text-xl">Color: </p>
+      <div className="flex items-center gap-1 text-xl">
+        <p className="text-gray-400">Color: </p>
         <select
           name=""
           id=""
-          className="font-bold outline-none text-xl"
+          className="font-bold outline-none"
           onChange={e => onChangeColor(e.target.value)}
         >
           <option value="">Not selected</option>

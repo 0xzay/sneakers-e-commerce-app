@@ -24,7 +24,7 @@ export const Sort = () => {
     dispatch(setSort(obj));
   };
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex mt-2 items-center gap-1">
       <p className="text-gray-400 text-xl">Sort by: </p>
       <select
         name=""

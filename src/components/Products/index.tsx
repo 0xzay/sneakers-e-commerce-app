@@ -8,17 +8,20 @@ import { useSelector } from 'react-redux';
 import { selectSneakersData } from '../../redux/sneakers/selectors';
 import ProductSkeleton from '../Product/skeleton';
 import { selectFilters } from '../../redux/filters/selectors';
-import { getUsdPrice } from '../../utils/getUsdPrice';
-import { SearchSneakersParams } from '../../redux/sneakers/types';
-import { sortList } from '../Sort';
-import { setFilters } from '../../redux/filters/slice';
 import { selectCurrency } from '../../redux/currency/selectors';
+import { selectCart } from '../../redux/cart/selectors';
+import { selectWishItems } from '../../redux/wish/selectors';
 
-export const Products: React.FC = () => {
+interface ProductsProps {
+  usdPrice: number;
+}
+
+export const Products: React.FC<ProductsProps> = ({ usdPrice }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const cart = useSelector(selectCart);
+  const wish = useSelector(selectWishItems);
   const { items, status } = useSelector(selectSneakersData);
-  const [usdPrice, setUsdPrice] = React.useState(0);
   const currency = useSelector(selectCurrency);
   const isMounted = React.useRef(false);
   const { brandFilter, colorFilter, currentPage, sort, searchValue } =
@@ -61,7 +64,6 @@ export const Products: React.FC = () => {
       const queryString = qs.stringify(params, { skipNulls: true });
       navigate(`/?${queryString}`);
     }
-    getUsdPrice().then(res => setUsdPrice(res));
     getSneakers();
     isMounted.current = true;
   }, [sortBy, order, brand, color, searchValue, currency]);
@@ -72,6 +74,16 @@ export const Products: React.FC = () => {
   const skeletons = [...new Array(8)].map((_, index) => (
     <ProductSkeleton key={index} />
   ));
+
+  React.useEffect(() => {
+    if (isMounted) {
+      const cartJson = JSON.stringify(cart.items);
+      const wishJson = JSON.stringify(wish);
+      localStorage.setItem('wish', wishJson);
+      localStorage.setItem('cart', cartJson);
+    }
+    isMounted.current = true;
+  }, [cart.items, wish]);
 
   return (
     <main className="">

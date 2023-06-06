@@ -23,10 +23,10 @@ export const ProductsHeader: React.FC = () => {
 
   return (
     <div className="pb-6">
-      <h1 className="text-9xl font-bold uppercase p-16">
+      <h1 className="text-7xl md:text-9xl font-bold uppercase p-2 md:p-16">
         {brandFilter === '' ? 'all sneakers' : brandFilter}
       </h1>
-      <div className="flex justify-between ml-10 mr-10">
+      <div className="flex flex-col md:flex-row justify-between md:ml-10 md:mr-10">
         <Filters
           brandFilterList={brandFilterList}
           brandValue={brandFilter}

@@ -37,15 +37,15 @@ export const WishProduct: React.FC<WishProductProps> = ({
   return (
     <div className="flex justify-between w-full border-b">
       <div className="flex">
-        <img src={imageUrl} alt="" className="w-56" />
-        <div className="p-6 text-2xl text-left">
+        <img src={imageUrl} alt="" className="w-32 md:w-56" />
+        <div className="p-2 md:p-6 md:text-2xl text-left">
           <p className="font-bold">{brand}</p>
           <p>{title}</p>
         </div>
       </div>
-      <div className="flex flex-col p-6 items-end justify-between">
+      <div className="flex flex-col p-2 md:p-6 items-end justify-between">
         <button
-          className="h-10 w-10 hover:bg-gray-100 rounded-full"
+          className="w-5 h-5 md:w-10 md:h-10 hover:bg-gray-100 rounded-full"
           onClick={onClickRemove}
         >
           <svg
@@ -74,14 +74,14 @@ export const WishProduct: React.FC<WishProductProps> = ({
           </svg>
         </button>
         <div>
-          <p className="text-xl font-bold text-end mb-4">
+          <p className="md:text-xl font-bold text-end mb-2 md:mb-4">
             {currency == 'USD'
               ? Math.trunc(price / usdPrice).toLocaleString()
               : price.toLocaleString()}{' '}
             {currency == 'USD' ? '$' : '₽'}
           </p>
           <button
-            className="pt-2 pb-2 pl-6 pr-6 uppercase font-bold bg-[#4c4c4c] hover:bg-[#333333] active:bg-[#2d2d2d] text-white transition-all duration-150"
+            className="pt-1 pb-1 pl-2 pr-2 md:pt-2 md:pb-2 md:pl-6 md:pr-6 text-xs md:text-md uppercase font-bold bg-[#4c4c4c] hover:bg-[#333333] active:bg-[#2d2d2d] text-white transition-all duration-150"
             onClick={onClickAdd}
           >
             Add to cart

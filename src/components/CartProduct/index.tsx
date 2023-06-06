@@ -36,36 +36,36 @@ export const CartProduct: React.FC<CartProductProps> = ({
   return (
     <div className="flex justify-between w-full border-b">
       <div className="flex">
-        <img src={imageUrl} alt="" className="w-56" />
-        <div className="p-6 text-2xl text-left">
+        <img src={imageUrl} alt="" className="w-32 md:w-56" />
+        <div className="p-2 md:p-6 text-sm md:text-2xl text-left">
           <p className="font-bold">{brand}</p>
           <p>{title}</p>
         </div>
       </div>
-      <div className="flex flex-col items-end gap-20 p-8 justify-between">
+      <div className="flex flex-col items-end gap-20 p-2 md:p-8 justify-between">
         <div className="flex gap-4 items-center">
           <div className="flex gap-2 items-center">
             <button
-              className="w-10 h-10 bg-gray-100 rounded-full text-xl font-bold"
+              className="w-5 h-5 md:w-10 md:h-10 bg-gray-100 rounded-full text-sm md:text-xl font-bold"
               onClick={count === 1 ? onClickRemove : onClickMinus}
             >
               -
             </button>
-            <span className="text-xl">{count}</span>
+            <span className="md:text-xl">{count}</span>
             <button
-              className="w-10 h-10 bg-gray-100 rounded-full text-xl font-bold"
+              className="w-5 h-5 md:w-10 md:h-10 bg-gray-100 rounded-full text-sm md:text-xl font-bold"
               onClick={onClickPlus}
             >
               +
             </button>
           </div>
           <button
-            className="h-10 w-10 hover:bg-gray-100 rounded-full"
+            className="w-5 h-5 hover:bg-gray-100 rounded-full"
             onClick={onClickRemove}
           >
             <svg
-              width="30px"
-              height="30px"
+              width="20px"
+              height="20px"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +89,7 @@ export const CartProduct: React.FC<CartProductProps> = ({
             </svg>
           </button>
         </div>
-        <p className="text-xl font-bold">
+        <p className="md:text-xl font-bold">
           {currency == 'USD'
             ? Math.trunc((price * count) / usdPrice).toFixed(2)
             : (price * count).toLocaleString()}{' '}

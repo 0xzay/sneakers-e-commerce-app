@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
-    <div className="pr-64 pl-64 pt-16 pb-32 flex justify-between items-center border-t">
-      <div className="flex gap-8">
+    <div className="pl-8 pr-8 pb-16 pt-16 md:pr-64 md:pl-64 md:pt-16 md:pb-32 flex flex-col md:flex-row justify-between items-center border-t">
+      <div className="flex flex-col items-center md:flex-row gap-8">
         <a href="/">
           <svg
             width="140"
@@ -30,7 +30,7 @@ export const Footer = () => {
           <Link to="/not-found">Not found</Link>
         </div>
       </div>
-      <p className="text-sm text-[#999999] max-w-md">
+      <p className="text-sm mt-8 md:mt-0 text-[#999999] md:max-w-md">
         Copyright © SNEAKERS® E-Commerce 2023 All Rights Reserved Developed with
         ❤ by{' '}
         <a
