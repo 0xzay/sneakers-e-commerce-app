@@ -2,6 +2,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import sneakers from './sneakers/slice';
 import currency from './currency/slice';
 import filters from './filters/slice';
+import cart from './cart/slice';
+import wish from './wish/slice';
 import { useDispatch } from 'react-redux';
 
 export const store = configureStore({
@@ -9,6 +11,8 @@ export const store = configureStore({
     sneakers,
     currency,
     filters,
+    cart,
+    wish,
   },
 });
 
