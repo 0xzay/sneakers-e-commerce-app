@@ -8,8 +8,7 @@ import { useAppDispatch } from '../../redux/store';
 
 export const ProductsHeader: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { brandFilter, colorFilter, sort, searchValue } =
-    useSelector(selectFilters);
+  const { brandFilter, colorFilter } = useSelector(selectFilters);
 
   const onChangeBrand = React.useCallback((idx: string) => {
     dispatch(setBrandFilter(idx));

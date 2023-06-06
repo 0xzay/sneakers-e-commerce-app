@@ -1,5 +1,3 @@
-import { setColorFilter } from '../../redux/filters/slice';
-
 const ColorFilter = ['White', 'Black', 'Gray', 'Blue', 'Green'];
 
 type FiltersProps = {
@@ -49,7 +47,11 @@ export const Filters: React.FC<FiltersProps> = ({
         >
           <option value="">Not selected</option>
           {ColorFilter.map((color, i) => (
-            <option key={i} value={color}>
+            <option
+              key={i}
+              className={colorValue === color ? 'bg-gray-200' : ''}
+              value={color}
+            >
               {color}
             </option>
           ))}

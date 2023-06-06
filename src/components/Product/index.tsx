@@ -24,9 +24,7 @@ export const Product: React.FC<ProductProps> = ({
   brand,
   price,
   imageUrl,
-  sizes,
   rating,
-  color,
   usdPrice,
 }) => {
   const dispatch = useAppDispatch();

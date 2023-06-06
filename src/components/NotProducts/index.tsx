@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const NotProducts = () => {
   return (
     <div className="text-center p-64">

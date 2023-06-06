@@ -1,4 +1,3 @@
-import React from 'react';
 import { SortPropertyEnum } from '../../redux/filters/types';
 import { setSort } from '../../redux/filters/slice';
 import { useAppDispatch } from '../../redux/store';
