@@ -1,14 +1,20 @@
 import React from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { Link } from 'react-router-dom';
+import { getUsdPrice } from '../utils/getUsdPrice';
 
 export const About = () => {
+  const [usdPrice, setUsdPrice] = React.useState(0);
+  React.useEffect(() => {
+    getUsdPrice().then(res => setUsdPrice(res));
+  }, []);
   return (
     <>
-      <Header />
+      <Header usdPrice={usdPrice} />
       <div className="mr-96 mt-10 ml-96 mb-96">
         <div className="flex gap-2 mb-10">
-          <a href="/">Home</a> <span className="text-gray-300">/</span>{' '}
+          <Link to="/">Home</Link> <span className="text-gray-300">/</span>{' '}
           <p className="font-bold">About</p>
         </div>
         <div>
