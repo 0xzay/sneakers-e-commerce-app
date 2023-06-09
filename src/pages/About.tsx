@@ -12,7 +12,7 @@ export const About = () => {
   return (
     <>
       <Header usdPrice={usdPrice} />
-      <div className="mr-96 mt-10 ml-96 mb-96">
+      <div className="md:mr-96 mt-10 md:ml-96 mb-64 md:mb-96">
         <div className="flex gap-2 mb-10">
           <Link to="/">Home</Link> <span className="text-gray-300">/</span>{' '}
           <p className="font-bold">About</p>

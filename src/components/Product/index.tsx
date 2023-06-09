@@ -61,7 +61,7 @@ export const Product: React.FC<ProductProps> = ({
 
   return (
     <div className="w-full bg-[#f2f3f3] flex flex-col md:max-w-[472.7px] min-h-[632.6px]">
-      <button className="self-end mt-8 mr-8" onClick={onClickWish}>
+      <button className="self-end mt-8 mr-8 group" onClick={onClickWish}>
         <svg
           viewBox="0 0 24.00 24.00"
           fill={findItem ? '#ed5355' : 'none'}
@@ -78,6 +78,7 @@ export const Product: React.FC<ProductProps> = ({
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                className="group-hover:stroke-[#ed5355] transition-colors ease-out duration-200"
               ></path>
             </g>
           </g>

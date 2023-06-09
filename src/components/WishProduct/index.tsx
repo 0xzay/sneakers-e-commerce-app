@@ -81,7 +81,7 @@ export const WishProduct: React.FC<WishProductProps> = ({
             {currency == 'USD' ? '$' : '₽'}
           </p>
           <button
-            className="pt-1 pb-1 pl-2 pr-2 md:pt-2 md:pb-2 md:pl-6 md:pr-6 text-xs md:text-md uppercase font-bold bg-[#4c4c4c] hover:bg-[#333333] active:bg-[#2d2d2d] text-white transition-all duration-150"
+            className="pt-1 pb-1 pl-2 pr-2 md:pt-4 md:pb-4 md:pl-8 md:pr-8 text-xs md:text-md uppercase font-bold bg-[#4c4c4c] hover:bg-[#333333] active:bg-[#2d2d2d] text-white transition-all duration-150"
             onClick={onClickAdd}
           >
             Add to cart

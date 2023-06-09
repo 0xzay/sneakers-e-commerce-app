@@ -60,7 +60,7 @@ export const CartProduct: React.FC<CartProductProps> = ({
             </button>
           </div>
           <button
-            className="w-5 h-5 hover:bg-gray-100 rounded-full"
+            className="w-5 h-5 md:w-10 md:h-10 hover:bg-gray-100 rounded-full"
             onClick={onClickRemove}
           >
             <svg
@@ -69,7 +69,7 @@ export const CartProduct: React.FC<CartProductProps> = ({
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="m-auto"
+              className="m-auto md:h-8 md:w-8"
             >
               <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
               <g

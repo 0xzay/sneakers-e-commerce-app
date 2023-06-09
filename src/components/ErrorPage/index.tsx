@@ -12,7 +12,7 @@ export const ErrorPage = () => {
   return (
     <>
       <Header usdPrice={usdPrice} />
-      <div className="flex flex-col p-44">
+      <div className="flex flex-col p-10 md:p-44">
         <img src={tyagi} alt="not found" className="self-center w-96" />
         <div className="text-center">
           <h1 className="text-9xl font-bold">404</h1>
