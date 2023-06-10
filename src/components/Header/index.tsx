@@ -82,7 +82,7 @@ export const Header: React.FC<HeaderProps> = ({ usdPrice }) => {
   return (
     <header className="flex sticky top-0 w-full items-center pt-8 md:pt-1 pb-8 md:pb-1 bg-[#1F1F1F] md:h-24">
       <div className="flex-1 flex justify-between items-center flex-col gap-4 md:ml-10 md:mr-10 md:flex-row">
-        <div className="flex flex-row-reverse items-center md:justify-between md:w-full">
+        <div className="flex flex-row-reverse md:flex-row items-center md:justify-between md:w-full">
           <a
             href="/"
             className="p-3 hover:bg-[#333333] active:bg-[#2d2d2d] rounded-full"
