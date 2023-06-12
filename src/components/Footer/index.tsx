@@ -33,11 +33,11 @@ export const Footer = () => {
         Copyright © SNEAKERS® E-Commerce 2023 All Rights Reserved Developed with
         ❤ by{' '}
         <a
-          href="https://github.com/0xzay"
+          href="https://github.com/zaycevv"
           className="text-green-500"
           target="_blank"
         >
-          0xzay
+          zaycevv
         </a>
       </p>
     </div>
