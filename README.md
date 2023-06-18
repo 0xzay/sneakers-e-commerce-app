@@ -4,6 +4,8 @@
 
 This project is a E-Commerce sneakers app. I developed the user-friendly design myself and tried to use all my skills to create a great app that can meet the needs of any user.
 
+⚠️ mockAPI.io which I used does not work very well so some filters may not work together like -> New Balance + Black.
+
 ### ⚙️ Technologies
 
 - `Vite` [↗](https://vitejs.dev/) as plugin
